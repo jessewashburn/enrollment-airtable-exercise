@@ -42,6 +42,15 @@ The script parses the following compound fields:
 
 ## Airtable Data Model
 
+The cleaned CSVs are imported into Airtable as three related tables: Leaders, Cities, and Enrollments.
+
+Relationships are modeled using Airtable link fields rather than embedded text values:
+
+- **Leaders → Cities**: Each leader is linked to a single city record.
+- **Enrollments → Leaders**: Each enrollment links to one leader.
+- **Enrollments → Cities**: Each enrollment links to one city.
+
+During import, stable identifier columns (e.g., `leader_email`, `city_state`) are used to resolve links. These identifier fields are retained as audit references, while link fields are treated as the authoritative relationships within Airtable.
 
 ## Definitions and Assumptions
 
@@ -63,3 +72,9 @@ The script parses the following compound fields:
 └── README.md
 ```
 
+## Design Decisions
+
+- **Normalization**: Non-atomic fields in the source CSV are split into separate tables to avoid duplication and improve clarity.
+- **Identifiers vs. relationships**: CSV outputs use stable textual identifiers (e.g., email, city/state) while Airtable link fields represent relationships.
+- **Completion percentages**: Completion values are stored as whole-number percentages to match the source data. A derived display field is used in Airtable to append `%` for readability.
+- **Primary fields**: Airtable primary fields are treated as human-readable labels rather than enforced keys, consistent with Airtable’s data model.
