@@ -30,14 +30,14 @@ except Exception as e:
 def parse_leader_info(value):
     """
     Expected format:
-    Name|email|Title:Role|Organization
+    Name|email|Title:Role|Tenure:YYYY-Present
     """
     parts = value.split("|")
     return {
         "leader_name": parts[0].strip(),
         "email": parts[1].strip(),
         "title": parts[2].replace("Title:", "").strip() if len(parts) > 2 else None,
-        "organization": parts[3].strip() if len(parts) > 3 else None,
+        "tenure": parts[3].replace("Tenure:", "").strip() if len(parts) > 3 else None,
     }
 
 
@@ -123,8 +123,7 @@ for idx, row in df.iterrows():
 
         leaders.append({
             **leader,
-            "city": city["city"],
-            "state": city["state"],
+            "city_state": city_key,
         })
 
         for i, course in enumerate(courses):
@@ -136,11 +135,10 @@ for idx, row in df.iterrows():
                 "end_date": course["end_date"],
                 "completion_percent": completion_map.get(course["course_name"]),
                 "program_center": program_centers[i] if i < len(program_centers) else None,
-                "city": city["city"],
-                "state": city["state"],
+                "city_state": city_key,
             })
     except Exception as e:
-        print(f"Warning: Failed to parse record_id={row.record_id}: {e}")
+        print(f"Warning: Failed to parse row {idx}: {e}")
         continue
 
 # -----------------------------
