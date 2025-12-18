@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains my solution to a technical exercise focused on cleaning, structuring, and reviewing enrollment data using Airtable. The goal of the exercise is to support a high-level review of program engagement and participation patterns across cities.
+This repository contains my solution to a technical exercise focused on cleaning, structuring, and reviewing enrollment data using Airtable. The goal of the exercise is to support a high-level review of program engagement and participation patterns across cities, program centers, and individual course offerings.
 
 ---
 
@@ -57,66 +57,30 @@ The script parses the following compound fields from the source CSV:
 
 ## Airtable Data Model
 
-The cleaned CSVs are imported into Airtable as three related tables: **Leaders**, **Cities**, and **Enrollments**.
+The cleaned CSVs are imported into Airtable as three related tables: **Leaders**, **Cities**, and **Enrollments**. Additional dimension tables for **Program Centers** and **Courses** are created directly within Airtable using link fields.
 
 Relationships are modeled using Airtable link fields:
 
-* **Leaders -> Cities**
+* **Leaders → Cities**
   Each leader is linked to a single city record.
 
-* **Enrollments -> Leaders**
+* **Enrollments → Leaders**
   Each enrollment links to one leader.
 
-* **Enrollments -> Cities**
+* **Enrollments → Cities**
   Each enrollment links to one city.
 
----
+* **Enrollments → Program Centers**
+  Each enrollment links to one program center.
 
-## Definitions and Assumptions
-
-* **Engagement** is defined as the volume of enrollments and average completion percentage associated with a city.
-* Cities with very small numbers of enrollments may show high completion averages that are not representative of broader participation.
-
----
-
-## Summary Observations
-
-To support review of engagement and completion patterns, the following Airtable views are created:
-
-* **Cities by Highest Enrollment**
-  Cities sorted by total number of enrollments, derived from rollups on the Enrollments table. 
-  
-  Top 3 by enrollment were: 
-  - Baltimore, MD
-  - San Francisco, CA
-  - Austin, TX
-
-* **Cities by Highest Completion**
-  Cities sorted by average completion percentage, with a filter applied to require a minimum number of enrollments. This avoids over-interpreting completion rates based on very small sample sizes.
-
-  Top 3 by completion percentage were: 
-  - Seattle, WA
-  - Austin, TX
-  - San Francisco, CA
-
-
-These views provide an overview of where participation is concentrated and where enrolled participants demonstrate strong follow-through.
+* **Enrollments → Courses**
+  Each enrollment links to one course.
 
 ---
 
-## Design Decisions
+## Analysis
 
-* **Normalization**
-  Non-atomic fields in the source CSV are split into separate tables to reduce duplication and improve clarity.
-
-* **Identifiers vs. relationships**
-  CSV outputs use stable textual identifiers for import and traceability, while Airtable link fields represent relationships.
-
-* **Completion percentages**
-  Completion values are stored as whole-number percentages to match the source data. No display-only percentage fields are used in order to preserve accurate rollup behavior.
-
-* **Primary fields**
-  Airtable primary fields are treated as human-readable labels rather than enforced keys, consistent with Airtable’s data model.
+See [analysis.md](analysis.md) for engagement findings and summary observations addressing the Dean's questions about impact and city engagement.
 
 ---
 
