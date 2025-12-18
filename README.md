@@ -95,5 +95,6 @@ See [analysis.md](analysis.md) for engagement findings and summary observations 
 │   └── enrollments.csv           # Output: course enrollments
 ├── scripts/
 │   └── clean_data.py             # Data cleaning script
+├── analysis.md                   # Engagement analysis and findings
 └── README.md
 ```
