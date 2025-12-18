@@ -5,7 +5,29 @@
 * **Engagement** is defined as enrollment volume and associated completion rates.
 * **Completion** reflects numeric course completion percentages provided in the source data.
 * Cities, program centers, or courses with very small numbers of enrollments may show high completion averages that are not representative of broader participation.
-* Minimum-enrollment filters are applied where appropriate to reduce over-interpretation.
+* A minimum-enrollment filter of **≥2 enrollments** is applied when reviewing completion percentages to prevent single enrollments from skewing averages.
+
+---
+
+## How to Review This Analysis in Airtable
+
+The findings summarized below are based on stakeholder-facing Airtable views created within the shared base.
+
+Each section references a specific table and saved view in Airtable:
+
+- **Cities**:  
+  - *Cities by Enrollment*  
+  - *Cities by  Completion*
+
+- **Program Centers**:  
+  - *Program Centers by Enrollment*  
+  - *Program Centers by Completion*
+
+- **Courses**:  
+  - *Courses by Enrollment*  
+  - *Courses by Completion*
+
+These views are sorted and filtered to support direct review in Airtable and serve as the primary visualizations for this analysis.
 
 ---
 
@@ -42,3 +64,4 @@ Enrollments were also reviewed at the individual course level to identify which 
   Data Visualization for Leadership recorded the highest average completion rate, followed by Innovation 101 and Public Innovation Lab. An additional nine courses exceeded 90 percent average completion, suggesting strong overall follow-through across the curriculum.
 
 Taken together, these views provide a balanced picture of geographic, programmatic, and course-level engagement.
+
