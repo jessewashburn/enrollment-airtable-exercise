@@ -2,10 +2,7 @@
 
 ## Definitions and Assumptions
 
-* **Enrollment** represents a single leader's participation in a specific course at a specific program center.
-* **Completion percentage** is a numeric value (0-100) representing how much of a course an individual leader completed.
 * **Engagement** is measured through enrollment counts and average completion percentages, aggregated using rollups across cities, program centers, and courses.
-* Cities, program centers, or courses with very small numbers of enrollments may show high completion averages that are not representative of broader participation.
 * A minimum-enrollment filter of **≥2 enrollments** is applied when reviewing completion percentages to prevent single enrollments from skewing averages.
 
 ---
@@ -34,7 +31,7 @@ These views are sorted and filtered to support direct review in Airtable and ser
 
 ## Summary Observations
 
-To address the Dean's request, engagement and completion were reviewed across three dimensions: **cities**, **program centers**, and **individual courses**.
+To address the Dean's request, enrollment and completion were reviewed across three dimensions: **cities**, **program centers**, and **individual courses**.
 
 ### City-Level Engagement
 
@@ -64,5 +61,4 @@ Enrollments were also reviewed at the individual course level to identify which 
 * **Courses by Avg Completion**
   Data Visualization for Leadership recorded the highest average completion rate, followed by Innovation 101 and Public Innovation Lab. An additional nine courses exceeded 90 percent average completion, suggesting strong overall follow-through across the curriculum.
 
-Taken together, these views provide a balanced picture of geographic, programmatic, and course-level engagement.
-
+Overall, the data suggests that engagement is geographically concentrated in a small number of cities, while completion rates remain consistently high across program centers and courses, indicating strong follow-through once participants enroll.
