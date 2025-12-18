@@ -102,7 +102,7 @@ def parse_completion(value):
 
 
 # -----------------------------
-# Build Leaders table
+# Process data and build tables
 # -----------------------------
 leaders = []
 cities = {}
